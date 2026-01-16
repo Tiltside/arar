@@ -1,0 +1,43 @@
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    role ENUM('user', 'admin') DEFAULT 'user'
+);
+
+CREATE TABLE applications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    course_name VARCHAR(255) NOT NULL,
+    start_date DATE NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    status VARCHAR(50) DEFAULT 'Новая',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    application_id INT NOT NULL,
+    text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (application_id) REFERENCES applications(id)
+);
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    duration VARCHAR(50),          -- например, "3 месяца"
+    price DECIMAL(10,2) NOT NULL, -- цена в рублях
+    image_url VARCHAR(255),        -- ссылка на изображение курса
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO courses (title, description, duration, price, image_url) VALUES
+('Веб‑разработка с нуля', 'Изучите HTML, CSS, JavaScript и PHP за 6 месяцев.', '6 месяцев', 29900.00, 'https://via.placeholder.com/300x200?text=Web+Dev'),
+('Английский для IT', 'Разговорный английский и профессиональная лексика.', '4 месяца', 19900.00, 'https://via.placeholder.com/300x200?text=English+IT'),
+('Аналитика данных', 'Python, SQL, визуализация данных и машинное обучение.', '5 месяцев', 34900.00, 'https://via.placeholder.com/300x200?text=Data+Analytics');
