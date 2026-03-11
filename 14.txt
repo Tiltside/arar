@@ -7,24 +7,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
         html, body {
-            height: 100%; /* Растягиваем на всю высоту окна */
-            margin: 0; /* Убираем отступы по умолчанию */
+            height: 100%;
+            margin: 0;
             background-color: blueviolet;
         }
         .container {
-            display: flex; /* Включаем flexbox */
-            justify-content: center; /* Центрируем по горизонтали */
-            align-items: center; /* Центрируем по вертикали */
-            height: 100%; /* Контейнер занимает всю высоту body */
-            flex-direction: column; /* Элементы формы идут колонкой */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
            
         }
         .btn a {
-            color: white; /* Белый цвет текста */
-            text-decoration: none; /* Убираем подчеркивание */
+            color: white;
+            text-decoration: none;
         }
         .btn a:hover {
-            color: white; /* Оставляем белым при наведении */
+            color: white;
             text-decoration: none;
         }
     </style>
